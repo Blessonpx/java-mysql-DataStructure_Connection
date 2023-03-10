@@ -18,16 +18,16 @@ import org.springframework.stereotype.Component;
 public class FileReaderUtility {
 	public static List<String> sql_data_structure = new ArrayList<String>();
 
-	@Value("${spring.datasource.url}")
-	private String url;
+//	@Value("${spring.datasource.url}")
+//	private String url;
+//	
+//	@Value("${spring.datasource.username}")
+//	private String user;
+//	
+//	@Value("${spring.datasource.password}")
+//	private String password;
 	
-	@Value("${spring.datasource.username}")
-	private String user;
-	
-	@Value("${spring.datasource.password}")
-	private String password;
-	
-	public void loadData() {
+	public void loadData(String url,String user,String password) {
 		String query = "select Name,UseCaseKey from RankedPickList_Stories_Master;";
 		
 		
