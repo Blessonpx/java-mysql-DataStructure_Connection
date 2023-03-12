@@ -43,9 +43,9 @@ public class FileReaderUtility {
             // ArrayList<String> list = new ArrayList<>();
 
             while (rs.next()) {
-                String columnValue1 = rs.getString("column_name_1");
-                String columnValue2 = rs.getString("column_name_2");
-                String concatenatedValues = columnValue1 + " " + columnValue2;
+                String columnValue1 = rs.getString("Name");
+                String columnValue2 = rs.getString("UseCaseKey");
+                String concatenatedValues = columnValue1 + "|" + columnValue2;
                 sql_data_structure.add(concatenatedValues);
             }
 
@@ -66,8 +66,9 @@ public class FileReaderUtility {
 	public Map<String,Object> getQueriedSqlData(){
 		Map<String, Object> response = new HashMap<>();
 		for(String line_l:sql_data_structure) {
-			String value_1=line_l.substring(0,StringUtils.ordinalIndexOf(line_l, " ", 1));
-	    	String value_2=line_l.substring(StringUtils.ordinalIndexOf(line_l, " ", 1)+1,StringUtils.ordinalIndexOf(line_l, " ", 2));
+			System.out.println(line_l);
+			String value_1=line_l.substring(0,StringUtils.ordinalIndexOf(line_l, "|", 1));
+	    	String value_2=line_l.substring(StringUtils.ordinalIndexOf(line_l, "|", 1)+1,line_l.length());
 	    	response.put(value_1, value_2);
 		}
 		return response;

@@ -22,7 +22,13 @@ public class Sql2DataStructureApplication {
 
 	public static void main(String[] args) {
 		try {
+			System.out.println(System.getProperty("spring.datasource.url"));
+			System.out.println(System.getProperty("spring.datasource.username"));
+			System.out.println(System.getProperty("spring.datasource.password"));
 			FileReaderUtility file_1 = new FileReaderUtility();
+			url=System.getProperty("spring.datasource.url");
+			user=System.getProperty("spring.datasource.username");
+			password=System.getProperty("spring.datasource.password");
 			file_1.loadData(url,user,password);
 		} catch (Exception ex) {
 	        ex.printStackTrace();
